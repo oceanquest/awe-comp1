@@ -126,7 +126,6 @@ class HtmlProductWriter extends ShopProductWriter
           <select id="producttype" name="producttype">
                 <option value="cd">CD</option>
                 <option value="book">Book</option>
-                <option value="game">Game</option>
           </select> 
           <br />
           <br />
@@ -141,7 +140,7 @@ class HtmlProductWriter extends ShopProductWriter
            <input type="text" id="title" name="title">
            <br />
            <br />
-         <label for="pages">Pages/Duration/PEGI:</label>
+         <label for="pages">Pages/Duration:</label>
            <input type="text" id="pages" name="pages">
            <br />
            <br />

@@ -4,17 +4,17 @@ namespace awe;
 
 abstract class ShopProductWriter
 {
-    protected $products = [];
-    
-    public function addProduct(ShopProduct $shopProduct)
+    protected array $products = [];
+
+    public function addProduct(ShopProduct $shopProduct): void
     {
         $this->products[] = $shopProduct;
     }
 
-    public function setProducts($products){
-        $this->products=$products;
+    public function setProducts(array $products): void
+    {
+        $this->products = $products;
     }
 
     abstract public function write();
-
 }

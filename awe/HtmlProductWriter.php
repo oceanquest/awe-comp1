@@ -7,10 +7,8 @@ class HtmlProductWriter extends ShopProductWriter
 
     public function write()
     {
-        echo '
-            <!DOCTYPE html>
-            <html>
-            ';
+        echo '<!DOCTYPE html>' . "\n";
+        echo '<html lang="en">';
 
         echo $this->htmlHeader();
         echo $this->htmlBody();
@@ -21,12 +19,10 @@ class HtmlProductWriter extends ShopProductWriter
     private function htmlHeader()
     {
         return
-            '
-            <head>
+            '<head>
                 <title>AWE Product List</title>
                 <link rel="stylesheet" href="./css/styles.css">
-            </head>
-            ';
+            </head>';
     }
 
     private function htmlBody()
@@ -47,36 +43,36 @@ class HtmlProductWriter extends ShopProductWriter
         return
             '<body>'
                 .$booktable .
-                '<br />'
+                '<br>'
                 .$cdtable.
-                '<br />'
+                '<br>'
                 .$addProduct .
             '</body>';
     }
 
-    private function generateBookTable($bookproducts)
+    private function generateBookTable(array $bookproducts): string
     {
         $contents = '';
         foreach ($bookproducts as $book) {
             $contents .= '<tr>
-                  <td>'.$book->getFullName().'</td>'
-                .'<td>'.$book->getTitle().'</td>'
-                .'<td>'.$book->getNumberOfPages().'</td>'
-                .'<td>'.$book->getPrice().'</td>'
-                .'<td>'.'<a href="./index.php?delete='.$book->getId().'">X</a>'.'</td>
+                  <td>' . htmlspecialchars($book->getFullName(), ENT_QUOTES, 'UTF-8') . '</td>'
+                . '<td>' . htmlspecialchars($book->getTitle(), ENT_QUOTES, 'UTF-8') . '</td>'
+                . '<td>' . htmlspecialchars((string) $book->getNumberOfPages(), ENT_QUOTES, 'UTF-8') . '</td>'
+                . '<td>' . htmlspecialchars((string) $book->getPrice(), ENT_QUOTES, 'UTF-8') . '</td>'
+                . '<td><a href="./index.php?delete=' . rawurlencode((string) $book->getId()) . '">X</a></td>
                 </tr>';
         }
         return
             '
             <h3>BOOKS</h3>
-            <table class="paleBlueRows equal-width">
+            <table class="pale-blue-rows equal-width">
                 <thead>
                     <tr>
-                        <th>AUTHOR</th>
-                        <th>TITLE</th>
-                        <th>PAGES</th>
-                        <th>PRICE</th>
-                        <th>DELETE</th>
+                        <th scope="col">AUTHOR</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col">PAGES</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">DELETE</th>
                     </tr>
                     </thead>
                     <tbody>'
@@ -85,29 +81,29 @@ class HtmlProductWriter extends ShopProductWriter
             </table>';
     }
 
-    private function generateCdTable($cdproducts)
+    private function generateCdTable(array $cdproducts): string
     {
         $contents = '';
         foreach ($cdproducts as $cd) {
             $contents .= '<tr>
-                  <td>'.$cd->getFullName().'</td>'
-                .'<td>'.$cd->getTitle().'</td>'
-                .'<td>'.$cd->getPlayLength().'</td>'
-                .'<td>'.$cd->getPrice().'</td>'
-                .'<td>'.'<a href="./index.php?delete='.$cd->getId().'">X</a>'.'</td>
+                  <td>' . htmlspecialchars($cd->getFullName(), ENT_QUOTES, 'UTF-8') . '</td>'
+                . '<td>' . htmlspecialchars($cd->getTitle(), ENT_QUOTES, 'UTF-8') . '</td>'
+                . '<td>' . htmlspecialchars((string) $cd->getPlayLength(), ENT_QUOTES, 'UTF-8') . '</td>'
+                . '<td>' . htmlspecialchars((string) $cd->getPrice(), ENT_QUOTES, 'UTF-8') . '</td>'
+                . '<td><a href="./index.php?delete=' . rawurlencode((string) $cd->getId()) . '">X</a></td>
                 </tr>';
         }
         return
             '
             <h3>CDs</h3>
-            <table class="paleBlueRows equal-width">
+            <table class="pale-blue-rows equal-width">
                  <thead>
-                    <tr>                    
-                        <th>ARTIST</th>
-                        <th>TITLE</th>
-                        <th>DURATION</th>
-                        <th>PRICE</th>
-                        <th>DELETE</th>
+                    <tr>
+                        <th scope="col">ARTIST</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col">DURATION</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">DELETE</th>
                     </tr>
                     </thead>
                     <tbody>'
@@ -118,38 +114,36 @@ class HtmlProductWriter extends ShopProductWriter
 
     private function generateAddProductForm()
     {
-        return '
-          <hr />
+        return '<hr>
           <h2>ADD NEW PRODUCT</h2>
          <form action="./index.php" method="post">
           <label for="producttype">Product Type:</label>
           <select id="producttype" name="producttype">
                 <option value="cd">CD</option>
                 <option value="book">Book</option>
-          </select> 
-          <br />
-          <br />
-         <label for="name">Author / Artist:</label><br />
+          </select>
+          <br>
+          <br>
+         <label for="name">Author / Artist:</label><br>
          <label for="fname">First Name:</label>
-           <input type="text" id="fname" name="fname"><br />
+           <input type="text" id="fname" name="fname"><br>
           <label for="sname">Main Name / Surname:</label>
            <input type="text" id="sname" name="sname">
-           <br />
-           <br />
+           <br>
+           <br>
          <label for="title">Title:</label>
            <input type="text" id="title" name="title">
-           <br />
-           <br />
+           <br>
+           <br>
          <label for="pages">Pages/Duration:</label>
            <input type="text" id="pages" name="pages">
-           <br />
-           <br />
+           <br>
+           <br>
           <label for="price">Price:</label>
            <input type="text" id="price" name="price">
-           <br />
-           <br /> 
-           <input type="submit" value="Submit">
-        </form> 
-        ';
+           <br>
+           <br>
+           <button type="submit">Submit</button>
+        </form>';
     }
 }

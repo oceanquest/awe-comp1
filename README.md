@@ -1,12 +1,17 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/jqfvWE5t)
-# Component 1 - Task
+# Part 1 - Task
+
+Please note that php can run a local 'development' webserver. The command for this that will bind ports and forwarding addresses when using codespaces is:
+
+```php
+php -S 0.0.0.0:8000
+```
 
 Currently index.php will display 2 tables and a form. Each table refers to a product type in a json file (Cds and Books).
 
 <img src='readme_images/start.jpg' width='450' />
 <p>
 
-Component 1 is about setting up your development environment, linking code to GIT, demonstrated through a short PHP task.
+Part 1 is about understanding your development environment, linking code to GIT, demonstrated through a short PHP task.
 </p>
 <p>
 You are to add a new product type - GameProduct. This will follow the same format as the other products and extend the 
@@ -43,3 +48,29 @@ server which will be written to an updated JSON file (products.json).</p>
 help visualise API writing methods if calling data directly from a database.</p>
 
 <p>This project is lightweight and has no error checking.</p>
+<hr />
+
+## Supplied Tests
+
+In the scripts directory you will find, to perform ./scripts/'scriptname'
+
+- validate-html-response.sh : this will run a server, do a curl action and lint the returned html
+- validate-json-response.sh : this will run a server, do a curl action to the api endpoint and lint the returned json
+- validate-json-file.sh : this will run a server, do a curl action to retrieve the json file directly and lint the json response
+
+```
+bash ./scripts/validate-html-response.sh
+```
+
+In addition there are project wide lint commands available through node (see package.json) that will scan the directory and look at files:
+
+- npm run lint:php
+- npm run lint:css
+- npm run lint:html
+- npm run lint:js
+
+```
+npm run lint:php
+```
+
+Please note at the start point there are no 'html' or 'js' files in the workspace and there is no requirement to add any.

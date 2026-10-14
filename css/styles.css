@@ -1,44 +1,51 @@
-table.paleBlueRows {
+table.pale-blue-rows {
     font-family: Verdana, Geneva, sans-serif;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #FFF;
     text-align: center;
     border-collapse: collapse;
     table-layout: fixed;
     width: 70%;
 }
-table.paleBlueRows td, table.paleBlueRows th {
-    border: 1px solid #FFFFFF;
+
+table.pale-blue-rows td, table.pale-blue-rows th {
+    border: 1px solid #FFF;
     padding: 3px 2px;
     width: 20%;
 }
-table.paleBlueRows tbody td {
+
+table.pale-blue-rows tbody td {
     font-size: 13px;
 }
-table.paleBlueRows tr:nth-child(even) {
+
+table.pale-blue-rows tr:nth-child(even) {
     background: #D0E4F5;
 }
-table.paleBlueRows thead {
+
+table.pale-blue-rows thead {
     background: #0B6FA4;
-    border-bottom: 5px solid #FFFFFF;
+    border-bottom: 5px solid #FFF;
 }
-table.paleBlueRows thead th {
+
+table.pale-blue-rows thead th {
     font-size: 15px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #FFF;
     text-align: center;
-    border-left: 2px solid #FFFFFF;
+    border-left: 2px solid #FFF;
 }
-table.paleBlueRows thead th:first-child {
+
+table.pale-blue-rows thead th:first-child {
     border-left: none;
 }
 
-table.paleBlueRows tfoot {
+table.pale-blue-rows tfoot {
     font-size: 14px;
     font-weight: bold;
-    color: #333333;
+    color: #333;
     background: #D0E4F5;
-    border-top: 3px solid #444444;
+    border-top: 3px solid #444;
 }
-table.paleBlueRows tfoot td {
+
+table.pale-blue-rows tfoot td {
     font-size: 14px;
 }

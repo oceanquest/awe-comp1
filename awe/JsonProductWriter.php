@@ -4,35 +4,35 @@ namespace awe;
 
 class JsonProductWriter extends ShopProductWriter
 {
-    public function write()
+    public function write(): void
     {
-        $json_str = '[';
-        foreach ($this->products as $product) {
-          $json_str .= $this->addEachProductAsJSON($product).',';
-        }
-        $json_str = rtrim($json_str, ","); //remove final ',' from outputted json string
+        $products = [];
 
-        $json_str .= "]";
-        echo $json_str;
+        foreach ($this->products as $product) {
+            $products[] = $this->addEachProductAsJSON($product);
+        }
+
+        echo json_encode($products, JSON_THROW_ON_ERROR);
     }
 
-    private function addEachProductAsJSON($product){
-        $json_product = [];
-        $json_product['id'] = $product->getId();
-        $json_product['title'] = $product->getTitle();
-        $json_product['firstname'] = $product->getFirstName();
-        $json_product['mainname'] = $product->getMainName();
-        $json_product['price'] = $product->getPrice();
+    private function addEachProductAsJSON(ShopProduct $product): array
+    {
+        $jsonProduct = [
+            'id' => $product->getId(),
+            'title' => $product->getTitle(),
+            'firstname' => $product->getFirstName(),
+            'mainname' => $product->getMainName(),
+            'price' => $product->getPrice(),
+        ];
 
-        if($product instanceof BookProduct) {
-            $json_product['numpages'] = $product->getNumberOfPages();
-            $json_product['type'] = "book";
-        }
-        if($product instanceof CDProduct) {
-            $json_product['playlength'] = $product->getPlayLength();
-            $json_product['type'] = "cd";
+        if ($product instanceof BookProduct) {
+            $jsonProduct['numpages'] = $product->getNumberOfPages();
+            $jsonProduct['type'] = 'book';
+        } elseif ($product instanceof CdProduct) {
+            $jsonProduct['playlength'] = $product->getPlayLength();
+            $jsonProduct['type'] = 'cd';
         }
 
-        return json_encode($json_product);
+        return $jsonProduct;
     }
 }

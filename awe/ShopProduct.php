@@ -4,11 +4,11 @@ namespace awe;
 
 class ShopProduct
 {
-    private $id;
-    private $title;
-    private $mainName;
-    private $firstName;
-    protected $price;
+    private string $id;
+    private string $title;
+    private string $mainName;
+    private string $firstName;
+    protected float $price;
 
     public function __construct(
         string $id,
@@ -25,33 +25,35 @@ class ShopProduct
         $this->price = $price;
     }
 
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return $this->firstName;
     }
 
-    public function getMainName()
+    public function getMainName(): string
     {
         return $this->mainName;
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
 
-    public function getPrice()
+    public function getPrice(): float
     {
-        return ($this->price);
+        return $this->price;
     }
 
-    public function getFullName()
+    public function getFullName(): string
     {
-        return $this->firstName . " " . $this->mainName;
+        $fullName = trim($this->firstName . ' ' . $this->mainName);
+
+        return $fullName;
     }
 }

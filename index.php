@@ -10,7 +10,9 @@ spl_autoload_register(function ($class_name) {
 
 $api_call=false;
 
-if($_SERVER['REQUEST_METHOD'] == 'GET') {
+$requestMethod = $_SERVER['REQUEST_METHOD'] ?? '';
+
+if($requestMethod == 'GET') {
     if (isset($_GET['delete'])) {
         \awe\JsonUtility::deleteProductWithId("products.json", $_GET['delete']);
     }
@@ -18,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET') {
         $api_call=$_GET['api'];
     }
 }
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+if($requestMethod == 'POST') {
     if (isset($_POST['producttype'])) {
         $producttype = $_POST['producttype'];
     }

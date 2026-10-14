@@ -1,0 +1,20 @@
+{
+  "name": "awe-2026-part-1",
+  "version": "1.0.0",
+  "description": "LBU Level 6 Advanced Web Engineering 2026 Part 1",
+  "type": "module",
+  "scripts": {
+    "lint": "npm run lint:php && npm run lint:html && npm run lint:css && npm run lint:js",
+    "lint:php": "find . -type f -name \"*.php\" ! -path \"*/node_modules/*\" ! -path \"*/vendor/*\" ! -path \"*/generated/*\" ! -path \"*/.*/*\" -exec php -l {} \\;",
+    "lint:html": "html-validate \"**/*.html\" \"!**/node_modules/**\" \"!**/vendor/**\" \"!**/generated/**\" \"!**/.*/**\"",
+    "lint:css": "stylelint \"**/*.css\" --ignore-pattern \"**/node_modules/**\" --ignore-pattern \"**/vendor/**\" --ignore-pattern \"**/generated/**\" --ignore-pattern \"**/.*/**\"",
+    "lint:js": "eslint \"**/*.js\" --ignore-pattern \"**/node_modules/**\" --ignore-pattern \"**/vendor/**\" --ignore-pattern \"**/generated/**\" --ignore-pattern \"**/.*/**\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.10.0",
+    "html-validate": "^11.16.0",
+    "stylelint": "^17.15.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}
